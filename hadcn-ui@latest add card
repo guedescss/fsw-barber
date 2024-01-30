@@ -1,0 +1,17 @@
+[33mcommit 60fc683d3def4cc04fb4ecbacb8af34e27c30086[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: João Vitor Guedes <138164577+guedescss@users.noreply.github.com>
+Date:   Tue Jan 30 19:23:33 2024 -0300
+
+    chore:add_seed.ts
+
+[33mcommit 33f9b2eed5a8490dcf4a006d2696e4fd332a4cd4[m
+Author: João Vitor Guedes <138164577+guedescss@users.noreply.github.com>
+Date:   Tue Jan 30 19:18:54 2024 -0300
+
+    chore:add_initial_prizma
+
+[33mcommit 9713a749912824b8a922ba975b26f9b37122a723[m
+Author: João Vitor Guedes <138164577+guedescss@users.noreply.github.com>
+Date:   Mon Jan 29 23:10:24 2024 -0300
+
+    Initial commit from Create Next App
