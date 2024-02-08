@@ -14,6 +14,7 @@ import { saveBooking } from "../_actions/save-booking";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { generateDayTimeList } from "./_helpers/hours";
+import { toast } from "sonner";
 
 interface ServiceItemProps {
   barbershop: Barbershop;
@@ -68,6 +69,15 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       });
 
       setSheetIsOpen(false);
+      toast("Reserva realizada com sucesso!", {
+        description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+          locale: ptBR,
+        }),        
+        action: {
+          label: "Visualizar",
+          onClick: () => router.push('/bookings'),
+        },
+      });
       setHour(undefined);
       setDate(undefined);
     } catch (error) {
