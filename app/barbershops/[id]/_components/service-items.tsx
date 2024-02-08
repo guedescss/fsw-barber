@@ -9,12 +9,13 @@ import { ptBR } from "date-fns/locale";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-import { addDays, format, setHours, setMinutes } from "date-fns";
+import { format, setHours, setMinutes } from "date-fns";
 import { saveBooking } from "../_actions/save-booking";
 import { Loader2 } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { generateDayTimeList } from "./_helpers/hours";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { getDayBookings } from "../_actions/get-day-bookings";
+import { generateDayTimeList } from "./_helpers/hours";
 
 interface ServiceItemProps {
   barbershop: Barbershop;
@@ -32,6 +33,19 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const [dayBookings, setDayBookings] = useState<Booking[]>([]);
+
+  useEffect(() => {
+    if (!date) {
+      return;
+    }
+
+    const refreshAvailableHours = async () => {
+      const _dayBookings = await getDayBookings(barbershop.id, date);
+      setDayBookings(_dayBookings);
+    };
+
+    refreshAvailableHours();
+  }, [date, barbershop.id]);
 
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
@@ -69,17 +83,17 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       });
 
       setSheetIsOpen(false);
+      setHour(undefined);
+      setDate(undefined);
       toast("Reserva realizada com sucesso!", {
         description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
           locale: ptBR,
-        }),        
+        }),
         action: {
           label: "Visualizar",
-          onClick: () => router.push('/bookings'),
+          onClick: () => router.push("/bookings"),
         },
       });
-      setHour(undefined);
-      setDate(undefined);
     } catch (error) {
       console.error(error);
     } finally {
@@ -154,7 +168,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                       selected={date}
                       onSelect={handleDateClick}
                       locale={ptBR}
-                      fromDate={addDays(new Date(), 1)}
+                      fromDate={new Date()}
                       styles={{
                         head_cell: {
                           width: "100%",
@@ -196,7 +210,8 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                       ))}
                     </div>
                   )}
-                   <div className="py-6 px-5 border-t border-solid border-secondary">
+
+                  <div className="py-6 px-5 border-t border-solid border-secondary">
                     <Card>
                       <CardContent className="p-3 gap-3 flex flex-col">
                         <div className="flex justify-between">
@@ -209,6 +224,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                             }).format(Number(service.price))}
                           </h3>
                         </div>
+
                         {date && (
                           <div className="flex justify-between">
                             <h3 className="text-gray-400 text-sm">Data</h3>
@@ -219,12 +235,14 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                             </h4>
                           </div>
                         )}
+
                         {hour && (
                           <div className="flex justify-between">
                             <h3 className="text-gray-400 text-sm">Horário</h3>
                             <h4 className="text-sm">{hour}</h4>
                           </div>
                         )}
+
                         <div className="flex justify-between">
                           <h3 className="text-gray-400 text-sm">Barbearia</h3>
                           <h4 className="text-sm">{barbershop.name}</h4>
@@ -232,9 +250,10 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                       </CardContent>
                     </Card>
                   </div>
+
                   <SheetFooter className="px-5">
                     <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading} className="w-full">
-                     {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       Confirmar reserva
                     </Button>
                   </SheetFooter>
