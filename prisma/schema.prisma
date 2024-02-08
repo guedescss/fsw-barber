@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -17,8 +14,8 @@ model User {
   emailVerified DateTime?
   image         String?
   accounts      Account[]
-  sessions      Session[]
   bookings      Booking[]
+  sessions      Session[]
 }
 
 model Barbershop {
@@ -26,8 +23,8 @@ model Barbershop {
   name     String
   address  String
   imageUrl String
-  services Service[]
   bookings Booking[]
+  services Service[]
 }
 
 model Service {
@@ -35,21 +32,21 @@ model Service {
   name         String
   price        Decimal    @db.Decimal(10, 2)
   barbershopId String
-  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   description  String
+  imageUrl     String
   bookings     Booking[]
-  imageUrl     String?
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
 }
 
 model Booking {
-  id          String     @id @default(uuid())
-  userId      String
-  user        User       @relation(fields: [userId], references: [id])
-  serviceId   String
-  service     Service    @relation(fields: [serviceId], references: [id])
-  babershopId String
-  barbershop  Barbershop @relation(fields: [babershopId], references: [id])
-  date        DateTime
+  id           String     @id @default(uuid())
+  userId       String
+  serviceId    String
+  barbershopId String
+  date         DateTime
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
+  service      Service    @relation(fields: [serviceId], references: [id])
+  user         User       @relation(fields: [userId], references: [id])
 }
 
 model Account {
@@ -58,15 +55,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
