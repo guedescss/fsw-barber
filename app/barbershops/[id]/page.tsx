@@ -1,24 +1,20 @@
 import { db } from "@/app/_lib/prisma";
 import BarbershopInfo from "./_components/barbershop-info";
-import ServiceItem from "./_components/service-items";
+import ServiceItem from "./_components/service-item";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/_lib/auth";
-import { Key } from "react";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-
-interface BarbershopsDetailsPageProps {
+interface BarbershopDetailsPageProps {
   params: {
     id?: string;
   };
 }
 
-const BarbershopsDetailsPage = async ({
-  params,
-}: BarbershopsDetailsPageProps) => {
+const BarbershopDetailsPage = async ({ params }: BarbershopDetailsPageProps) => {
+  const session = await getServerSession(authOptions);
 
-const session =  await getServerSession(authOptions)
   if (!params.id) {
-    // TODO: redirecionar pra home page
+    // TODO: redirecionar para home page
     return null;
   }
 
@@ -26,31 +22,27 @@ const session =  await getServerSession(authOptions)
     where: {
       id: params.id,
     },
-
     include: {
-        services: true,
-    }
+      services: true,
+    },
   });
 
   if (!barbershop) {
-    // TODO: redirecionar pra home page
+    // TODO: redirecionar para home page
     return null;
   }
- 
-  return ( <div>
-  
-    <BarbershopInfo barbershop={barbershop}/>
 
-    <div className="px-5 flex flex-col gap-4 py-6">
-    {barbershop.services.map((service: { id: Key | null | undefined; }) => (
-        <ServiceItem key={service.id} barbershop={barbershop} service={service} isAuthenticated={!!session?.user}/>
-    ))}
-    
+  return (
+    <div>
+      <BarbershopInfo barbershop={barbershop} />
+
+      <div className="px-5 flex flex-col gap-4 py-6">
+        {barbershop.services.map((service) => (
+          <ServiceItem key={service.id} barbershop={barbershop} service={service} isAuthenticated={!!session?.user} />
+        ))}
+      </div>
     </div>
-  </div>
   );
-
 };
 
-export default BarbershopsDetailsPage;
- 
+export default BarbershopDetailsPage;
