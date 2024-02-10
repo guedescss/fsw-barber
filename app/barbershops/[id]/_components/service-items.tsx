@@ -15,8 +15,8 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { getDayBookings } from "../_actions/get-day-bookings";
-import { generateDayTimeList } from "./_helpers/hours";
 import BookingInfo from "@/app/_components/booking-info";
+import { generateDayTimeList } from "./_helpers/hours";
 
 interface ServiceItemProps {
   barbershop: Barbershop;
@@ -163,7 +163,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                     <SheetTitle>Fazer Reserva</SheetTitle>
                   </SheetHeader>
 
-                  <div className="py-6">
+                  <div className="py-0">
                     <Calendar
                       mode="single"
                       selected={date}
@@ -213,7 +213,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   )}
 
                   <div className="py-6 px-5 border-t border-solid border-secondary">
-                  <BookingInfo
+                    <BookingInfo
                       booking={{
                         barbershop: barbershop,
                         date:
@@ -226,7 +226,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   </div>
 
                   <SheetFooter className="px-5">
-                    <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading} className="w-full">
+                    <Button onClick={handleBookingSubmit} disabled={!hour || !date || submitIsLoading}>
                       {submitIsLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                       Confirmar reserva
                     </Button>
