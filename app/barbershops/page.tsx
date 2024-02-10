@@ -7,7 +7,7 @@ import Search from "../(home)/_components/search";
 interface BarbershopsPageProps {
     searchParams: {
         search?: string;
-    }
+    };
 }
 
 const BarbershopsPage = async ({searchParams}: BarbershopsPageProps) => {
@@ -19,9 +19,9 @@ const BarbershopsPage = async ({searchParams}: BarbershopsPageProps) => {
             name: {
                 contains: searchParams.search,
                 mode: 'insensitive'
-            }
-        }
-    })
+            },
+        },
+    });
     return (
     <>
     <Header />
