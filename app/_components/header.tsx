@@ -10,6 +10,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
+    <header>
     <Card>
       <CardContent className="p-5 justify-between items-center flex flex-row">
         <Link href="/">
@@ -28,6 +29,7 @@ const Header = () => {
         </Sheet>
       </CardContent>
     </Card>
+    </header>
   );
 };
 
