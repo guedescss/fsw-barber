@@ -29,7 +29,6 @@
 
 <p align="center">
     <img src="https://i.imgur.com/JNjZL9f.png" alt="Image Example" width="400px">
-    <img src="https://i.imgur.com/9uAPeXu.png" alt="Image Example" width="400px">
 </p>
 
 <h2 id="started">🚀 Getting started</h2>
