@@ -18,13 +18,18 @@
 
 <p align="center">
  <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a> •
  <a href="#colab">Collaborators</a> •
- <a href="#contribute">Contribute</a>
 </p>
 
 <p align="center">
-  <b>Simple description of what your project do or how to use it.</b>
+  <b>Projeto desenvolvido com nextJS; tailwind; prisma; shadcn.</b>
+</p>
+
+<h2 id="layout">🎨 Layout</h2>
+
+<p align="center">
+    <img src="https://i.imgur.com/JNjZL9f.png" alt="Image Example" width="400px">
+    <img src="https://i.imgur.com/9uAPeXu.png" alt="Image Example" width="400px">
 </p>
 
 <h2 id="started">🚀 Getting started</h2>
