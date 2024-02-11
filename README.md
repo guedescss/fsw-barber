@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+[TYPESCRIPT_BADGE]: https://img.shields.io/badge/typescript-D4FAFF?style=for-the-badge&logo=typescript
+[REACT_BADGE]: https://img.shields.io/badge/react-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=white
+[NEXTJS_BADGE]: https://img.shields.io/badge/next.js-%23000000.svg?style=for-the-badge&logo=next.js&logoColor=white
+[POSTGRESQL_BADGE]: https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white
+[TAILWINDCSS_BADGE]: https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white
+[PRISMA_BADGE]: https://img.shields.io/badge/prisma-%231B222D.svg?style=for-the-badge&logo=prisma&logoColor=white
 
-## Getting Started
 
-First, run the development server:
+<h1 align="center" style="font-weight: bold;">FSW Barber ✂️</h1>
+
+![react][REACT_BADGE]
+![next.js][NEXTJS_BADGE]
+![tailwindcss][TAILWINDCSS_BADGE]
+![postgresql][POSTGRESQL_BADGE]
+![prisma][PRISMA_BADGE]
+![typescript][TYPESCRIPT_BADGE]
+
+
+<p align="center">
+ <a href="#started">Getting Started</a> • 
+  <a href="#routes">API Endpoints</a> •
+ <a href="#colab">Collaborators</a> •
+ <a href="#contribute">Contribute</a>
+</p>
+
+<p align="center">
+  <b>Simple description of what your project do or how to use it.</b>
+</p>
+
+<h2 id="started">🚀 Getting started</h2>
+
+Here you describe how to run your project locally
+
+<h3>Prerequisites</h3>
+
+Here you list all prerequisites necessary for running your project. For example:
+
+- [NodeJS](https://github.com/)
+- [Git 2](https://github.com)
+
+<h3>Cloning</h3>
+
+How to clone your project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/guedescss/fsw-barber
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h3>Starting</h3>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+How to start your project
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+cd barber-fsw
+npm run dev
+``````
+<h2 id="colab">🤝 Collaborators</h2>
 
-## Learn More
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/138164577?v=4" width="100px;" alt="Guedes css Profile Picture"/><br>
+        <sub>
+          <b>Guedes CSS[../]</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
