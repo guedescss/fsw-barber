@@ -19,8 +19,8 @@
 <p align="center">
  <a href="#started">Getting Started</a> • 
  <a href="#colab">Collaborators</a> •
- <a href="#deploy">Projeto Finalizado</a> •
-</p>
+ <a href="#deploy">Projeto Finalizado</a>
+ </p>
 
 <p align="center">
   <b>Projeto desenvolvido com nextJS; tailwind; prisma; shadcn.</b>
