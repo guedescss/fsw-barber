@@ -19,6 +19,7 @@
 <p align="center">
  <a href="#started">Getting Started</a> • 
  <a href="#colab">Collaborators</a> •
+ <a href="#deploy">Projeto Finalizado</a> •
 </p>
 
 <p align="center">
@@ -34,6 +35,9 @@
 <h2 id="started">🚀 Getting started</h2>
 
 Here you describe how to run your project locally
+
+<h2 id="deploy">🚀 Deploy Online</h2>
+https://fsw-barber-liard.vercel.app
 
 <h3>Prerequisites</h3>
 
